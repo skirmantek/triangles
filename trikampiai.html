@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Triangles</title>
+    <style>
+        body{
+            background-color: #CDCDCD;
+        }
+        #result {
+            font-family: "Courier New", Courier, monospace;
+            color:#fff;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+        #triangle, #pyramid, #reverse{
+            color: #fff;
+            background-color: grey;
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            margin:10px;
+        }
+        #clear{
+            color: #fff;
+            background-color: #FA8072;
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            margin:10px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+        button{
+            font-family: "Courier New", Courier, monospace;
+            font-weight: bolder;
+            font-size: 20px;
+        }
+        button:focus {outline:0;}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="buttons">
+    <button id="triangle">Triangle</button>
+    <button id="pyramid">Pyramid</button>
+    <button id="reverse">Reverse</button>
+    <button id="clear">Clear</button>
+        </div>
+        <div class="draw">
+    <p id="result"></p>
+    </div>
+    </div>
+
+
+    <script>
+        let push_1 = document.getElementById("triangle");
+        let push_2 = document.getElementById("pyramid");
+        let push_3 = document.getElementById("reverse");
+        let push_4 = document.getElementById("clear");
+
+
+        //triangle
+        push_1.addEventListener("click", function () {
+            let result = '';
+            for (let i = 1; i < 6; i++) {
+                for (let z = 0; z < i; z++) {
+                    result += "* ";
+                }
+                result += '<br>';
+            }
+            document.getElementById("result").innerHTML = result;
+        });
+
+
+        //pyramid
+        push_2.addEventListener("click", function () {
+            let str = '';
+            for (let i = 0; i < 5; i++) {
+
+                for (let j = 1; j < 5 - i; j++) {
+                    str = str + '&nbsp';
+                }
+
+                for (let k = 1; k <= (2 * i + 1); k++) {
+                    str = str + '*';
+                }
+                str = str + '<br>';
+            }
+            document.getElementById("result").innerHTML = str;
+        });
+
+
+        //reverse pyramid
+        push_3.addEventListener("click", function () {
+            let stri = '';
+            for (let a = 5; a >= 1; a--) {
+                for (let b = 5; b >= a; b--) {
+                    stri += '&nbsp';
+                }
+                for (let c = 1; c <= a; c++) {
+                    
+                    stri += '* ';
+                }
+            stri += '<br>';
+            }
+            document.getElementById("result").innerHTML = stri;
+        });
+
+        //clear
+        push_4.addEventListener("click", function () {
+            document.getElementById("result").innerHTML = null;
+        });
+
+    </script>
+</body>
+
+</html>
